@@ -112,7 +112,7 @@ namespace OculusSampleFramework
             Transform tf = gameObject.GetComponent<Transform>();
             if (tf.localScale.x < 0.02f)
                 return;
-            transform.localScale -= new Vector3(tf.localScale.x / 1.001f, tf.localScale.y / 1.001f, tf.localScale.z / 1.001f);
+            transform.localScale -= new Vector3(tf.localScale.x * 0.999f, tf.localScale.y * 0.999f, tf.localScale.z * 0.999f);
         }
         
         /*public void SetColor(Color focusColor)
