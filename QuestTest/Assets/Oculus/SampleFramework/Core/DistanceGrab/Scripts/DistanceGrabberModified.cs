@@ -94,7 +94,7 @@ namespace OculusSampleFramework
             m_maxGrabDistance = sc.radius + 5.0f;
 
             m_canScaleObjects = true;
-            m_debounceTime = 0.2f;
+            m_debounceTime = 0.1f;
 
             if(m_parentHeldObject == true)
             {
@@ -128,7 +128,7 @@ namespace OculusSampleFramework
 
             if (m_debounceTime < 0.0f)
             {
-                m_debounceTime = 0.2f;
+                m_debounceTime = 0.1f;
                 m_canScaleObjects = true;
             }
 
