@@ -38,6 +38,9 @@ namespace OculusSampleFramework
         float m_noSnapThreshhold = 5.0f;
 
         [SerializeField]
+        public GameObject firePrefab;
+
+        [SerializeField]
         bool m_useSpherecast;
         public bool UseSpherecast
         {
@@ -80,6 +83,8 @@ namespace OculusSampleFramework
 
         bool m_canScaleObjects;
         float m_debounceTime;
+
+
 
         protected override void Start()
         {
@@ -227,6 +232,11 @@ namespace OculusSampleFramework
                 ((DistanceGrabbableFloater)m_grabbedObj).Shrink();
                 m_canScaleObjects = false;
             }
+            else if (OVRInput.Get(OVRInput.RawButton.B) && !m_grabbedObj.isOnFire)
+            {
+                SetOnFire(m_grabbedObj);
+                m_grabbedObj.isOnFire = true;
+            }
 
             Rigidbody grabbedRigidbody = m_grabbedObj.grabbedRigidbody;
             Vector3 grabbablePosition = pos + rot * m_grabbedObjectPosOff;
@@ -259,6 +269,11 @@ namespace OculusSampleFramework
                 return go.GetComponent<DistanceGrabbable>() ?? go.GetComponentInParent<DistanceGrabbable>();
             }
             return null;
+        }
+
+        public void SetOnFire(OVRGrabbable parent)
+        {
+            Instantiate(firePrefab, parent.transform);
         }
 
         protected bool FindTarget(out DistanceGrabbable dgOut, out Collider collOut)
