@@ -28,6 +28,7 @@ public class OVRGrabbable : MonoBehaviour
     protected bool m_snapPosition = false;
     [SerializeField]
     protected bool m_snapOrientation = false;
+
     [SerializeField]
     protected Transform m_snapOffset;
     [SerializeField]
@@ -36,6 +37,7 @@ public class OVRGrabbable : MonoBehaviour
     protected bool m_grabbedKinematic = false;
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
+    public bool isOnFire = false;
 
 	/// <summary>
 	/// If true, the object can currently be grabbed.
